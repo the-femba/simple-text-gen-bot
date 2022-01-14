@@ -32,7 +32,7 @@ internal sealed class MessagingController : Controller
 		try
 		{
 			if (Message.Text is var text && text is null) return "Error";
-			text = text.Remove(0, GenerateCommandName.Length + 1);
+			text = RemoveCommandPrefix(text, GenerateCommandName);
 
 			var tokens = _parser.Parse(text);
 		
@@ -50,7 +50,7 @@ internal sealed class MessagingController : Controller
 		try
 		{
 			if (Message.Text is var text && text is null) return "Error";
-			text = text.Remove(0, LearnCommandName.Length + 1);
+			text = RemoveCommandPrefix(text, LearnCommandName);
 		
 			await _learnService.LearnText(_parser.Parse(text));
 		
@@ -60,5 +60,10 @@ internal sealed class MessagingController : Controller
 		{
 			return "Error";
 		}
+	}
+
+	private string RemoveCommandPrefix(string text, string prefix)
+	{
+		return  text.Remove(0, prefix.Length + 1);
 	}
 }
