@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="dotenv.net" Version="3.1.1" />
+      <PackageReference Include="Lotos.DependencyInjection" Version="1.1.1" />
+      <PackageReference Include="Lotos.Mongo" Version="1.1.1" />
+      <PackageReference Include="Replikit.Adapters.Telegram" Version="0.3.2" />
+      <PackageReference Include="Replikit.Core" Version="0.3.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update=".env">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>
